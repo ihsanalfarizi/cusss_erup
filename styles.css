@@ -1246,6 +1246,7 @@ nav {
         }
 
 /* ===== GALLERY SECTION ===== */
+
 .gallery {
     padding: 80px 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #8b4513 100%);
@@ -1291,7 +1292,7 @@ nav {
 
 /* Portrait items (Lukisan 5 & 6) - Adjusted heights */
 .gallery-item.portrait {
-    height: 450px; /* Increased from 400px */
+    height: 450px;
     grid-row: span 2;
 }
 
@@ -1381,230 +1382,282 @@ nav {
 }
 
 .gallery-portrait .gallery-item {
-    height: 500px; /* Increased from 400px for better visibility */
+    height: 500px;
     min-width: 250px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-item.portrait {
-        height: 400px; /* Adjusted for mobile */
-        grid-row: span 1;
-    }
-    
-    .gallery-portrait {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery-portrait .gallery-item {
-        height: 450px; /* Better mobile height for portraits */
-    }
-}
-
-/* Additional responsive breakpoints for better control */
-@media (max-width: 480px) {
-    .gallery-item.portrait {
-        height: 350px;
-    }
-    
-    .gallery-portrait .gallery-item {
-        height: 400px;
-    }
-}
-
-/* For very tall portrait images, you can also use this approach */
+/* For very tall portrait images */
 .gallery-item.portrait-tall {
     height: 550px;
     grid-row: span 3;
 }
 
+/* ===== RESPONSIVE DESIGN - MOBILE PORTRAIT IMPROVEMENTS ===== */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .gallery-item.portrait {
+        height: 420px;
+    }
+    
+    .gallery-portrait .gallery-item {
+        height: 480px;
+    }
+}
+
+/* Mobile landscape */
 @media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .gallery-item {
+        height: 250px;
+    }
+    
+    /* PENTING: Pertahankan aspek portrait di mobile */
+    .gallery-item.portrait {
+        height: 380px; /* Tinggi yang proporsional untuk portrait */
+        grid-row: span 1; /* Reset grid row span */
+    }
+    
+    .gallery-portrait {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 100%;
+    }
+    
+    .gallery-portrait .gallery-item {
+        height: 380px; /* Konsisten dengan portrait items */
+        min-width: auto;
+    }
+}
+
+/* Mobile portrait - Satu kolom untuk portrait items */
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery-item {
+        height: 280px;
+    }
+    
+    /* Portrait items tetap portrait di mobile */
+    .gallery-item.portrait {
+        height: 420px; /* Tinggi yang mempertahankan aspek portrait */
+        grid-row: span 1;
+    }
+    
+    .gallery-portrait {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery-portrait .gallery-item {
+        height: 420px; /* Konsisten untuk semua portrait items */
+        width: 100%;
+        max-width: 300px; /* Batas maksimal lebar */
+        margin: 0 auto; /* Center alignment */
+    }
+    
+    /* Very tall portrait handling */
     .gallery-item.portrait-tall {
         height: 450px;
         grid-row: span 1;
     }
 }
 
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+    .gallery-item.portrait {
+        height: 400px;
+    }
+    
+    .gallery-portrait .gallery-item {
+        height: 400px;
+        max-width: 280px;
+    }
+}
+
 /* ===== CONTACT SECTION ===== */
 
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #8b4513 100%);
-            color: white;
-        }
+.contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #8b4513 100%);
+    color: white;
+}
 
-        .contact h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #f39c12;
-            position: relative;
-        }
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #f39c12;
+    position: relative;
+}
 
-        .contact h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #f39c12, #e74c3c);
-            border-radius: 2px;
-        }
+.contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, #f39c12, #e74c3c);
+    border-radius: 2px;
+}
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
 
-        .contact-info h3,
-        .contact-form h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: #f39c12;
-        }
+.contact-info h3,
+.contact-form h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #f39c12;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
 
-        .contact-item i {
-            font-size: 1.5rem;
-            margin-top: 0.2rem;
-            width: 24px;
-            text-align: center;
-        }
+.contact-item i {
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+    width: 24px;
+    text-align: center;
+}
 
-        .contact-item i.fas.fa-map-marker-alt {
-            color: #EA4335;
-        }
+.contact-item i.fas.fa-map-marker-alt {
+    color: #EA4335;
+}
 
-        .contact-item i.fas.fa-phone {
-            color: #34A853;
-        }
+.contact-item i.fas.fa-phone {
+    color: #34A853;
+}
 
-        .contact-item i.fas.fa-envelope {
-            color: #4285F4;
-        }
+.contact-item i.fas.fa-envelope {
+    color: #4285F4;
+}
 
-        .contact-item i.fab.fa-instagram {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.contact-item i.fab.fa-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-        .contact-item i.fab.fa-youtube {
-            color: #FF0000;
-        }
+.contact-item i.fab.fa-youtube {
+    color: #FF0000;
+}
 
-        .contact-item i.fab.fa-tiktok {
-            color: #ff0050;
-            position: relative;
-        }
+.contact-item i.fab.fa-tiktok {
+    color: #ff0050;
+    position: relative;
+}
 
-        .contact-item i.fab.fa-tiktok::before {
-            background: linear-gradient(45deg, #ffffff, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.contact-item i.fab.fa-tiktok::before {
+    background: linear-gradient(45deg, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-        .contact-item i.fab.fa-facebook {
-            color: #1877f2;
-        }
+.contact-item i.fab.fa-facebook {
+    color: #1877f2;
+}
 
-        .contact-item div {
-            flex: 1;
-        }
+.contact-item div {
+    flex: 1;
+}
 
-        .contact-item strong {
-            color: #f39c12;
-        }
+.contact-item strong {
+    color: #f39c12;
+}
 
-        .contact-item p {
-            color: #e0e0e0;
-        }
+.contact-item p {
+    color: #e0e0e0;
+}
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #f39c12;
-            font-weight: 600;
-        }
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+    font-weight: 600;
+}
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid rgba(243, 156, 18, 0.3);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(243, 156, 18, 0.3);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #f39c12;
-            background: rgba(255,255,255,0.15);
-        }
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f39c12;
+    background: rgba(255,255,255,0.15);
+}
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.6);
-        }
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
 
-        .cta-button {
-            background: linear-gradient(45deg, #f39c12, #e74c3c);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.cta-button {
+    background: linear-gradient(45deg, #f39c12, #e74c3c);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
-        }
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .contact h2 {
-                font-size: 2rem;
-            }
-            
-            .contact-info h3,
-            .contact-form h3 {
-                font-size: 1.5rem;
-            }
-        }
+/* Responsive Design for Contact */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 1.5rem;
+    }
+}
 
 /* ===== FOOTER ===== */
 footer {
